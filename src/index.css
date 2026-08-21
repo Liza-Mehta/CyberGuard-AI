@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-soc-950 text-soc-100 font-sans antialiased;
+    font-feature-settings: 'ss01', 'cv01';
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism surface */
+  .glass {
+    background: linear-gradient(
+      180deg,
+      rgba(18, 28, 48, 0.55) 0%,
+      rgba(11, 18, 32, 0.65) 100%
+    );
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid rgba(100, 130, 180, 0.1);
+  }
+  .glass-hover {
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+      border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+  }
+  .glass-hover:hover {
+    transform: translateY(-4px);
+  }
+
+  .text-gradient-accent {
+    background: linear-gradient(120deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .grid-bg {
+    background-image: linear-gradient(
+        rgba(59, 130, 246, 0.05) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+
+  .shimmer-line {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(59, 130, 246, 0.5) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    @apply animate-shimmer;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(59, 130, 246, 0.3) transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgba(59, 130, 246, 0.3);
+    border-radius: 999px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-accent/60 focus:ring-offset-1 focus:ring-offset-soc-950;
+  }
+
+  /* Hide number input spinners */
+  .no-spinner::-webkit-outer-spin-button,
+  .no-spinner::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .no-spinner {
+    -moz-appearance: textfield;
+  }
+}
